@@ -8,7 +8,6 @@ from discord import app_commands
 from discord.ext import commands
 from dotenv import load_dotenv
 from discord import Intents, Client, Message
-from responses import get_response
 import requests
 
 # STEP 0: LOAD OUR TOKEN FROM .env FILE
@@ -59,7 +58,33 @@ async def email(interaction: discord.Interaction, query: str):
     """
     await interaction.response.defer()
     try:
-        response = get_response(query)
+        response = "Hard Code Response For Email Query"
+        await interaction.followup.send(f"{response}")
+    except discord.errors.NotFound as e:
+        print(f"Interaction error: {e}")
+    except Exception as e:
+        print(f"An unexpected error occurred: {e}")
+
+@bot.tree.command(name="count")
+@app_commands.describe(query="Type essay description here")
+async def count(interaction: discord.Interaction, query: str):
+    """
+    This command takes an count query, processes it, and sends a response back to the user.
+
+    Parameters
+    ----------
+    interaction : discord.Interaction
+        The interaction object that represents the command invocation context.
+    query : str
+        user query or input.
+
+    Returns
+    -------
+    None
+    """
+    await interaction.response.defer()
+    try:
+        response = "Hard Code Response For Count"
         await interaction.followup.send(f"{response}")
     except discord.errors.NotFound as e:
         print(f"Interaction error: {e}")
@@ -85,7 +110,7 @@ async def essay(interaction: discord.Interaction, query: str):
     """
     await interaction.response.defer()
     try:
-        response = get_response(query)
+        response = "Hard Code Response For Essay"
         await interaction.followup.send(f"{response}")
     except discord.errors.NotFound as e:
         print(f"Interaction error: {e}")

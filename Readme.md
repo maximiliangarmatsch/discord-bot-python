@@ -19,7 +19,6 @@ pip install -r requirements.txt
 ## create .env
 ```
 DISCORD_TOKEN = "Discord Token"
-OPENAI_KEY = "Opena API Key For"
 webhook_URL = "MC webhook URL"
 
 ```
