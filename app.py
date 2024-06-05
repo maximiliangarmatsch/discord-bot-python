@@ -14,6 +14,8 @@ import requests
 load_dotenv()
 TOKEN: Final[str] = os.getenv('DISCORD_TOKEN')
 webhook_URL = os.getenv("webhook_URL")
+gmail_make_api_url = os.getenv("gmail_make_api_url")
+make_api_token = os.getenv("make_api_token")
 intents: Intents = Intents.default()
 intents.message_content = True
 bot = commands.Bot(command_prefix = "/", intents = discord.Intents.all())
@@ -164,6 +166,10 @@ async def on_message(message: Message) -> None:
     username: str = str(message.author)
     user_message: str = message.content
     channel: str = str(message.channel)
+    headers = {
+        'Authorization': f'Token {make_api_token}'
+    }
+    response = requests.post(gmail_make_api_url, headers = headers)
     print(f'[{channel}] {username}: "{user_message}"')
     await send_message(message, user_message)
 

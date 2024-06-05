@@ -20,6 +20,8 @@ pip install -r requirements.txt
 ```
 DISCORD_TOKEN = "Discord Token"
 webhook_URL = "MC webhook URL"
+gmail_make_api_url = "MC API URL"
+make_api_token = "MC API Token"
 
 ```
 ## Run Server
